@@ -100,22 +100,7 @@ export class EsseCard extends LitElement {
                 </div>
             </div>
         </div>
-   
 
-   
-    <button id="duplicateCardButton">Duplicate Card</button>
-
-    
-    <button id="toggleBackgroundColorButton">Toggle Background Color</button>
-
-   
-    <button id="changeHeadingButton">Change Heading</button>
-
-    
-    <button id="deleteLastCardButton">Delete Last Card</button>
-
-    
-    
     <script src="script.js"></script>
 </body>
     `;

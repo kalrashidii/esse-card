@@ -1,28 +1,77 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Put your description here.">
   <base href="/">
-
+  <title>esse-card</title>
   <style>
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       font-family: sans-serif;
       background-color: #ededed;
     }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .product-card {
+      width: 300px;
+      margin: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    .bg-toggle {
+      background-color: #f0f0f0; 
+    }
   </style>
-  <title>esse-card</title>
 </head>
-
 <body>
-  <esse-card></esse-card>
+  <button id="duplicateCardButton">Duplicate Card</button>
+  <button id="toggleBackgroundColorButton">Toggle Background Color</button>
+  <button id="changeHeadingButton">Change Heading</button>
+  <button id="deleteLastCardButton">Delete Last Card</button>
 
-  <script type="module" src="./src/esse-card.js"></script>
+  <div class="card-container">
+    <div class="product-card">
+      <h2>Bottoms</h2>
+      <p>Fall collection</p>
+    </div>
+  </div>
+
+  <script>
+    const duplicateCardButton = document.getElementById("duplicateCardButton");
+    const toggleBackgroundColorButton = document.getElementById("toggleBackgroundColorButton");
+    const changeHeadingButton = document.getElementById("changeHeadingButton");
+    const deleteLastCardButton = document.getElementById("deleteLastCardButton");
+    const cardContainer = document.querySelector(".card-container");
+
+    duplicateCardButton.addEventListener("click", () => {
+      const currentCard = cardContainer.querySelector(".product-card:last-child");
+      const newCard = currentCard.cloneNode(true);
+      cardContainer.appendChild(newCard);
+    });
+
+    toggleBackgroundColorButton.addEventListener("click", () => {
+      const currentCard = cardContainer.querySelector(".product-card:last-child");
+      currentCard.classList.toggle("bg-toggle");
+    });
+
+    changeHeadingButton.addEventListener("click", () => {
+      const currentCard = cardContainer.querySelector(".product-card:last-child");
+      const heading = currentCard.querySelector("h2");
+      heading.textContent = "New Heading";
+    });
+
+    deleteLastCardButton.addEventListener("click", () => {
+      const lastCard = cardContainer.querySelector(".product-card:last-child");
+      if (lastCard) {
+        cardContainer.removeChild(lastCard);
+      }
+    });
+  </script>
 </body>
-
 </html>
